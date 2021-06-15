@@ -1,0 +1,87 @@
+6/14/21:
+
+s0: make basic express app
+- goto empty project
+- run npm init -y
+- run npm i express mongoose ejs
+- create app.js
+- set up basic app.js 
+
+s1: create views directory
+- create home.ejs
+- in app.js, setup view engine to be ejs and set views directory to be views
+- in app.js, setup the path 
+
+s2: setup flightroutes model basics
+- create models directory
+- make our file called flightroutes.js
+- flightroutes.js
+    - require mongoose 
+    - make Schema shortcut
+    - create flightroutes Schema 
+    - export flightroutes model
+    - import flightroute model in app.js
+
+s3: connect mongoose in app.js 
+- require mongoose 
+- connect mongoose to mongodb
+
+6/15/21:
+
+s4: create a Flightroute New route to book new flightRoute(do not need login) 
+- create flightroutes/new.ejs 
+- add route in app.js to flightroutes/new.ejs 
+- in flightroutes/new.ejs
+    - add input textfield for origin, destination, date input
+        - add label to each textfield for web accessibility
+        - add the name attribute
+    - create public folder
+        - add skyscannerAPI script
+    - in app.js, app.use(express.static('public')) in order to make the public folder available to new.ejs
+    - in app.js, <script src="/skyscannerAPI.js"></script> in order to make the js file available to new.ejs
+    - add <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> to use axios
+    
+s5: gathered flightroute data from API and display on the DOM
+- use DOM createElement in skyscannerAPI.js
+    - create visible elements 
+        - in order to show user the data
+    - create hidden input textfield
+        - in order to pass data to server using post 
+    - create a button for each flight route shown on DOM
+    - add a form for each button
+    - post routing to /flightRoutes
+
+s6: review middleware
+
+s7: add some basic styles
+- use EJS mate for layout
+    - in app.js, require ejs mate
+    - tell app to use ejs engine
+    - define a layout folder in views
+        - create boilerplate.ejs 
+    - config the new.ejs 
+    - now we are successfully injecting out content to boilerplate as body
+- use Bootstrap5 
+    - add bootstrap css and javascript link to boilerplate.ejs
+    - surround the body with main tag
+        - The <main> HTML element represents the central topic content of the <body> of a document.
+        - The content of a <main> element should be unique to the document. 
+        Content that is repeated across a set of documents or document sections
+        such as sidebars, navigation links, copyright information, site logos, 
+        and search forms shouldn't be included unless the search form is the main function of the page.
+        - give it a container class
+- add a basic bootstrap nav bar to the boilerplate 
+    - so have access for every page
+    - insert the code above container class
+- add margin to container
+- move the navbar to partials
+- add a footer
+    - use flexbox to make it to the bottom of webpage
+- style the new form
+    - center everything 
+
+s8. review error handling
+
+
+
+
