@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -43,6 +44,8 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('public'));
 //middleware: tell express to parse the req.body on every single request
 app.use(express.urlencoded({extended: true}));
+//middleware: tell express to use method override(put,delete)
+app.use(methodOverride('_method'));
 
 
 //session and flash

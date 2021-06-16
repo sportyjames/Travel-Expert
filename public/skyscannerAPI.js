@@ -29,6 +29,9 @@ form.addEventListener('submit',function(e)
         //checks if we have a quote or there were no flights
         if("Quotes" in response.data)
         {
+            //remove all child element of container before each search 
+            container.innerHTML = "";
+
             //Add the airport to the dictionary.
             for(let place of response.data["Places"])
             {
@@ -115,6 +118,7 @@ form.addEventListener('submit',function(e)
                 form.appendChild(space);
                 form.appendChild(button);
 
+                //try to use a card to style the new elements but does not work 
                 // form.appendChild(card);
                 // card.appendChild(card_body);
                 // card_body.appendChild(airline);

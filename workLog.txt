@@ -165,6 +165,52 @@ s15. Authentication(username and password)
     - login the user if register successfully
 - use returnTo to keep track of where the user wants to go 
 
-6/16:
+6/16/21:
+
 s16: Authorization
+- connect user model with flightroute model 
+    - add a field to each flightroute called userID 
+        - when create a new flightroute, the userID stored in request.user will be stored in that flightroute
+            - flightroute.owner = req.user._id;
+
+- work on owner's account dropdown list, owner's flightroutes index page, show page, edit page, delete button first, come back to Authorization later
+
+s17. Account dropdown list 
+
+s18. owner's flight index page 
+- add isLoggedIn middleware to index route for protection purpose 
+- only find routes belonging to this owner 
+    - Flightroute.find({ owner: req.user._id } 
+
+s19. owner's flight show page (Maybe need to add isOwner middleware, add later)
+
+s20. owner's flight edit page (need to add isOwner middleware, add later)
+- use method override 
+    - npm i method-override
+    - require in app.js
+    - app.use in app.js
+    - now can use put method 
+
+s21. owner's flight delete button 
+
+s22. isOwner middleware(important to have)
+- prevent somebody edit/delete by using the other people's flightroute id link
+- how to do that?
+    - before updating anything, we want to check if this flightroute has same owner_id as the current logged in user 
+    - break the put method's findByIdUpdate into 2 steps 
+    - if the owner does not equal to current login user, flash error and redirect 
+    - if equal, do the update 
+    - put this logic into a middleware called isOwner
+
+s23. server side validation
+- I think the server side for search flight is not needed because it is not using http request but calling the API
+- the validation for the update price can easily done without using JOI
+    - if(!req.body.flightroute.date) throw new ExpressError('Invalid time', 400)
+
+s24. Fixing the problem of search button
+- it should clear the previous element on the dom before add new element
+
+s25. Moving on the SSSP algorithm, unsplash API(attraction preview)... 
+
+
 
