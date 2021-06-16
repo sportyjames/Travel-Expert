@@ -1,0 +1,23 @@
+.flash {
+  padding: 20px;
+  background-color:rgb(203, 234, 209);
+  color:rgb(22, 71, 27);
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color:rgb(22, 71, 27);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

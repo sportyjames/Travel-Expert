@@ -82,6 +82,89 @@ s7: add some basic styles
 
 s8. review error handling
 
+s9. add validation
+- add bootstrap client side validation
+- Basic error handler
+    - define ExpressError Class under util folder
+    - define catchAsync
+    - setup a 404 at the end of route 
+- do the server side validation later after user creates its own account 
+    - update flightroute 
+    - delete flightroute 
 
+s10. breakout routes
+- create routes folder
+- breaking out flightroutes 
 
+s11. review flash&session
+
+s12. add express session to the application 
+- npm i express-session
+- require it in app.js
+- why need express session:
+    - used for flash messages 
+    - used for add authentication
+- session config
+    - will need to refactor later once deploy
+        - not going to use the local memory session store
+- use session
+
+s13. add flash success (work on flash error later)
+- npm i connect-flash
+- require it in app.js
+- use flash
+- add req.flash('success','Successfully made a new campground!') to post /flight route
+- now need to make sure I am displaying the information on the template
+    - can set up a middleware that will take everything on every request 
+    - if there is anything in the flash in that session, will add it into template 
+    - have access to it as a local variable
+    - create the middleware before any route handler
+
+s14. create flash success partial 
+- just to make the flash success look better 
+- add the condition, only show the partial if success exist and it is not empty
+- use html css js to make it work. Bootstrap somehow not working.
+
+s15. Authentication(username and password)
+- npm i passport passport-local passport-local-mongoose 
+- create the user model 
+    - has email, username, and password 
+- configuring app.js to use passport 
+    - require passport and localstrategy
+    - app.use passport initialize and passport session 
+    - passport.use passport.serializeUser passport.deserializeUser
+- create the register form
+    - create a users.js route
+    - create users folder under view 
+        - create register.ejs 
+    - in app.js, require user route and use user routes
+    - add layout to register.ejs 
+    - handle the post form route in router 
+- register route logic
+    - write a try catch inside so the default error page will not be displayed
+    the error will be display on the same register page 
+- create the login form 
+- login route logic 
+    - use the passport.authenticate middleware
+- isLoggedIn middleware 
+    - used to protect some basic routes 
+        - cannot book new flightroute if not signed in !!!
+        - will later associate user with flightroute
+        - will have isOwner middleware later
+    - need to check if someone is currently logged in 
+        - use the passport helper method 'isAuthenticated' and create a middleware isLoggedIn
+- add logout 
+    - create a /logout route
+        - use the express logout method in user.ejs
+- add login, logout, and register to the nav bar
+    - if user is not logged in, show login and register
+    - if user is logged in, only show logout
+    - How to do that?
+        - app.use the req.user property 
+- fix register route 
+    - login the user if register successfully
+- use returnTo to keep track of where the user wants to go 
+
+6/16:
+s16: Authorization
 

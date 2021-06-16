@@ -3,18 +3,27 @@
 <div class="row">
     <h1 class="text-center">Flight Search</div>
     <div class="col-6 offset-3">
-        <form id="searchForm">
+        <form id="searchForm" novalidate class="validated-form">
             <div class="mb-3">
-                <label for="origin" class="form-label">Enter an origin: </label>
-                <input class="form-control" id="origin" type="text" placeholder="City/Country Origin" name="origin">
+                <label for="origin" class="form-label">Enter an origin(City/Country airport code): </label>
+                <input class="form-control" id="origin" type="text" placeholder="e.g. LAX-sky" name="origin" required>
+                <div class="valid-feedback">
+                    Well done!
+                </div>
             </div>
             <div class="mb-3">
-                <label for="destination" class="form-label">Enter a destination</label>
-                <input class="form-control" id="destination" type="text" placeholder="City/Country Destination" name="destination">
+                <label for="destination" class="form-label">Enter a destination(City/Country airport code): </label>
+                <input class="form-control" id="destination" type="text" placeholder="e.g. SFO-sky" name="destination" required>
+                <div class="valid-feedback">
+                    Awesome!
+                </div>
             </div>
             <div class="mb-3">
                 <label for="outboundDate" class="form-label">Enter an outbound date</label>
-                <input class="form-control" id="outboundDate" type="text" placeholder="Outbound Date" name="outboundDate">
+                <input class="form-control" id="outboundDate" type="text" placeholder="e.g. 2021-06-30" name="outboundDate" required>
+                <div class="valid-feedback">
+                    Excellent!
+                </div>
             </div>
             <input class="btn btn-outline-primary" type="reset" value="Reset">
             <input class="btn btn-outline-primary" type="submit" value="Search">
@@ -27,5 +36,6 @@
 </div>
 
 
-
 <script src="/skyscannerAPI.js"></script>
+
+

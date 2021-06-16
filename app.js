@@ -2,7 +2,19 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const Flightroute = require('./models/flightroute');
+const session = require('express-session');
+const flash = require('connect-flash');
+const ExpressError = require('./utils/ExpressError');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
+
+
+//require flightroutes 
+const flightrouteRoutes = require('./routes/flightroutes');
+//require userroutes
+const userRoutes = require('./routes/users');
+
 
 //db connection
 mongoose.connect('mongodb://localhost:27017/travel-expert', {
@@ -29,26 +41,65 @@ app.set('views', path.join(__dirname, 'views'))
 
 //middleware: tell express to serve static files under public folder on every single request
 app.use(express.static('public'));
-
 //middleware: tell express to parse the req.body on every single request
 app.use(express.urlencoded({extended: true}));
 
+
+//session and flash
+const sessionConfig = {
+    secret: 'thisshouldbeabettersecret!',
+    resave: false, //this makes deprecation warning go away
+    saveUninitialized: true, //this makes deprecation warning go away
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7, //so user won't sign in forever
+        maxAge: 1000 * 60 * 60 * 24 * 7 //cookie age
+    }
+}
+app.use(session(sessionConfig));
+app.use(flash());
+
+
+//passport setup make sure it is defined after session and flash
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate())); //tell passport to use the localstrategy
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+//this middleware ensures flash won't be passed to template but have access to something called success
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error'); //work on it later
+    next();
+})
+
 //routes
+//0. userroutes
+app.use('/', userRoutes);
+
+//1. flightroutes
+app.use('/flightroutes', flightrouteRoutes)
+
+//2. home route
 app.get('/', (req, res) => {
     res.render('home')
 });
 
-app.get('/flightroutes/new', (req, res) => {
-    res.render('flightroutes/new');
+
+//404 error handler
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404))
 })
 
-app.post('/flightroutes', async (req,res) => {
-    //try to create one and store in db 
-    const flightroute = new Flightroute(req.body.flightroute);
-    await flightroute.save();
-    res.redirect("/");
+//error middleware
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err;
+    if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+    res.status(statusCode).render('error', { err })
 })
-
 
 app.listen(3000, () => {
     console.log('Serving on port 3000')
