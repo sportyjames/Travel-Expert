@@ -15,7 +15,8 @@ const User = require('./models/user');
 const flightrouteRoutes = require('./routes/flightroutes');
 //require userroutes
 const userRoutes = require('./routes/users');
-
+//require previewroutes
+const pictureRoutes = require('./routes/pictureroutes')
 
 //db connection
 mongoose.connect('mongodb://localhost:27017/travel-expert', {
@@ -85,6 +86,7 @@ app.use('/', userRoutes);
 
 //1. flightroutes
 app.use('/flightroutes', flightrouteRoutes)
+app.use('/picture', pictureRoutes)
 
 //2. home route
 app.get('/', (req, res) => {

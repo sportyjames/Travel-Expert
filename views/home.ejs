@@ -79,7 +79,7 @@
         text-align: center;
     }
 
-    .begin-text a {
+    .begin-text button {
         border: 1px solid white;
         border-radius: 40px;
         padding: 1rem 2rem;
@@ -90,11 +90,11 @@
           text-decoration: none;
     }
 
-    .begin-text a:focus {
+    .begin-text button:focus {
         outline: none;
     }
 
-    .begin-text a:hover {
+    .begin-text button:hover {
         cursor: pointer;
     }
 
@@ -184,11 +184,12 @@
 
             
             <div class="begin-text">
-                <form action="/flightroutes" method="post" novalidate="novalidate">
+                <form action="/picture" method="POST" novalidate="novalidate" id="FORM">
                         <div class="d-flex justify-content-center h-30">
                             <div class="searchbar">
-                                <input class="search_input" type="text" placeholder="Where to go?">
-                                <a href="/flightroutes" class="search_icon"><i class="fas fa-search"></i></a>
+                                <input class="search_input" type="text" placeholder="Where to go?" name="cityName">
+                                <!-- <button > button </button> -->
+                                <button class="search_icon"><i class="fas fa-search" ty></i></button>
                             </div>
                         </div>
                 </form>
@@ -205,7 +206,6 @@
         <i class="fas fa-ad"></i>
     </footer>
 </div>
-
 
 <script src="https://kit.fontawesome.com/73b7f72ef4.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -4,5 +4,7 @@
 <ul>
     <% for (let flightroute of flightroutes){%>
     <li><a href="/flightroutes/<%= flightroute._id %>"><%= flightroute.date %></a></li>
+    <li><a href="/flightroutes/<%= flightroute._id %>"><%= flightroute.origin %></a></li>
+    <li><a href="/flightroutes/<%= flightroute._id %>"><%= flightroute.destination %></a></li>
     <% }%>
 </ul>

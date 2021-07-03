@@ -13,6 +13,7 @@ router.get('/new', (req, res) => {
 //flight index page
 router.get('/', isLoggedIn ,catchAsync(async(req, res) => {
     const flightroutes = await Flightroute.find( { owner: req.user._id } ); //only find routes belonging to this owner 
+    console.log(flightroutes)
     res.render('flightroutes/index', { flightroutes });
 }));
 

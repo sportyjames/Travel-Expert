@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
+
+<div class="container mt-5 mb-3">
+    <h1> Welcome to <%= collection[0] %> </h1>
+</div>
+<div class="w3-content w3-section" style="width: 500px; height: 300px;" id="picture">
+    <img class="mySlides w3-animate-top" src='<%= collection[1] %>' style="width:100%">
+    <img class="mySlides w3-animate-bottom" src='<%= collection[2] %>' style="width:100%">
+    <img class="mySlides w3-animate-top" src='<%= collection[3] %>' style="width:100%">
+    <img class="mySlides w3-animate-bottom" src='<%= collection[4] %>' style="width:100%">
+  </div>
+  
+<div class="container mt-5 mb-3">
+    Book your flight to <%= collection[0] %> 
+    <button>
+      <p>Click me</p>
+    </button>
+</div>
+
+
+
+
+<script>
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 2500);    
+    }
+</script>
+<script src="/picture.js"> </script>
+    
