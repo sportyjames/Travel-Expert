@@ -9,6 +9,11 @@ const UserSchema = new Schema(
             type: String,
             require: true,
             unique: true
+        },
+        departure:
+        {
+            type: String,
+            require: true,
         }
     }
 );
