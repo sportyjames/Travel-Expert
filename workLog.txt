@@ -210,7 +210,23 @@ s23. server side validation
 s24. Fixing the problem of search button
 - it should clear the previous element on the dom before add new element
 
-s25. Moving on the SSSP algorithm, unsplash API(attraction preview)... 
+s25. home page setup 
+
+s26. DFS algorithm implementation
+
+s27. city picture page
+
+s28. unsplash API(city picture)
+
+s29. style the reconstructed itinerary
+
+
+
+
+
+
+
+
 
 
 

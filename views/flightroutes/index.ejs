@@ -2,6 +2,14 @@
 
     <h1>My Flight Routes</h1>
 
+    <ul>
+        <% for (let flightroute of flightroutes){%>
+            <li><a href="/flightroutes/<%= flightroute._id %>">
+                    <%= flightroute.date %>
+                </a></li>
+            <% }%>
+    </ul>
+
 
     <% while (order_itineraries.length > 0 || flightroutes.length > 0) {%>
         <% if(order_itineraries.length > 0) {%>
