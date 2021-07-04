@@ -25,12 +25,13 @@ form.addEventListener('submit',function(e)
         //Carriers dictionary which contains carrierID and airline_name pair
         let carriers = {};
 
-
+        
+   
         //checks if we have a quote or there were no flights
         if("Quotes" in response.data)
         {
             //remove all child element of container before each search 
-            container.innerHTML = "";
+ 
 
             //Add the airport to the dictionary.
             for(let place of response.data["Places"])
@@ -44,10 +45,14 @@ form.addEventListener('submit',function(e)
                 carriers[airline["CarrierId"]] = airline["Name"];
             }
 
-            
+            const cardDeck = document.querySelector('.card-deck');
+            cardDeck.style.width = "1000px";
+            cardDeck.style.marginLeft = "135px";
+            cardDeck.innerHTML = "";   
             for(let Quotes of response.data["Quotes"])
             {
                 //extract values from JSON
+                 
                 let ori = Quotes["OutboundLeg"]["OriginId"];
                 let dest = Quotes["OutboundLeg"]["DestinationId"];
                 let carrier = carriers[Quotes["OutboundLeg"]["CarrierIds"][0]];
@@ -55,29 +60,74 @@ form.addEventListener('submit',function(e)
                 let direct = Quotes["Direct"];
 
                 //create dom elements to display flight info to user and create form for data submission
-                const container = document.querySelector('#container');
                 const form = document.createElement('form');
                 form.setAttribute("method", "post");
                 form.setAttribute("action", "/flightroutes");
 
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.style.backgroundColor = "#add8e6"
+                card.style.marginBottom = "15px";
+                card.style.width = "100%";
+                // card.style.marginRight= "100px";
+                // card.style.textAlign = "center";
 
-                const airline = document.createElement('div');
-                airline.className = "airline mt-2";
-                airline.innerHTML = `Journey:  ${airports[ori]}  --> ${airports[dest]} by ${carrier}`;
-                const ticketPrice = document.createElement('div');
-                ticketPrice.className = "ticketPrice";
-                ticketPrice.innerHTML = `Price: ${Quotes["MinPrice"]} USD `;
-                const departureDate = document.createElement('div');
-                departureDate.className = "departureDate";
-                departureDate.innerHTML = `Depart at: ${date}`;
-                const flightRouteType = document.createElement('div');
-                flightRouteType.className = "flightRouteType";
-                flightRouteType.innerHTML = `Direct flight: ${direct}`;
-                const space = document.createElement('div');
-                space.innerHTML = `*************************`;
-                const button = document.createElement('button');
-                button.className = "btn btn-outline-primary";
-                button.innerHTML = 'Book Now';
+                const airlineImg = document.createElement('img');
+                airlineImg.classList.add("card-img-top");
+                airlineImg.src = "https://www.pngfind.com/pngs/m/609-6090022_airline-icao-code-jetblue-hd-png-download.png";
+                airlineImg.style.width = "800px";
+                airlineImg.style.height = "100px";
+
+                const cardBody = document.createElement('div');
+                cardBody.classList.add("card-body");
+                
+                const cardTitle = document.createElement('h5');
+                cardTitle.classList.add("card-title");
+                cardTitle.innerHTML = `Journey:  ${airports[ori]}  --> ${airports[dest]}`;
+
+                const cardAirline = document.createElement('p');
+                cardAirline.classList.add("card-text");
+                cardAirline.innerHTML = `Airline: ${carrier}`;
+
+                const cardText = document.createElement('p');
+                cardText.classList.add("card-text");
+                cardText.innerHTML = `Price: ${Quotes["MinPrice"]} USD `
+
+                const cardDirect= document.createElement('p');
+                cardDirect.classList.add("card-text");
+                cardDirect.innerHTML = `Direct flight: ${direct}`;
+
+                const cardButton = document.createElement('button');
+                // cardButton.classList.add("card-text");
+                cardButton.className = "btn btn-primary";
+                cardButton.innerHTML = 'Book Now';
+
+                
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardAirline);
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(cardDirect);
+                // cardBody.appendChild(cardButton);
+                // card.appendChild(airlineImg);
+                card.appendChild(cardBody);
+                
+                // const airline = document.createElement('div');
+                // airline.className = "airline mt-2";
+                // airline.innerHTML = `Journey:  ${airports[ori]}  --> ${airports[dest]} by ${carrier}`;
+                // const ticketPrice = document.createElement('div');
+                // ticketPrice.className = "ticketPrice";
+                // ticketPrice.innerHTML = `Price: ${Quotes["MinPrice"]} USD `;
+                // const departureDate = document.createElement('div');
+                // departureDate.className = "departureDate";
+                // departureDate.innerHTML = `Depart at: ${date}`;
+                // const flightRouteType = document.createElement('div');
+                // flightRouteType.className = "flightRouteType";
+                // flightRouteType.innerHTML = `Direct flight: ${direct}`;
+                // const space = document.createElement('div');
+                // space.innerHTML = `*************************`;
+                // const button = document.createElement('button');
+                // button.className = "btn btn-outline-primary";
+                // button.innerHTML = 'Book Now';
 
                 //hidden form input, used for sending flight info to server using form 
                 const priceHidden = document.createElement('input');
@@ -111,12 +161,12 @@ form.addEventListener('submit',function(e)
                 directHidden.value = direct;
 
                 //append visible element
-                form.appendChild(airline);
-                form.appendChild(ticketPrice);
-                form.appendChild(departureDate);
-                form.appendChild(flightRouteType);
-                form.appendChild(space);
-                form.appendChild(button);
+                // form.appendChild(airline);
+                // form.appendChild(ticketPrice);
+                // form.appendChild(departureDate);
+                // form.appendChild(flightRouteType);
+                // form.appendChild(space);
+                // form.appendChild(button);
 
                 //try to use a card to style the new elements but does not work 
                 // form.appendChild(card);
@@ -135,17 +185,19 @@ form.addEventListener('submit',function(e)
                 form.appendChild(dateHidden);
                 form.appendChild(airlineHidden);
                 form.appendChild(directHidden);
+                form.appendChild(cardButton);
 
-                container.appendChild(form);
+                card.appendChild(form);
+                cardDeck.appendChild(card);
 
                 
             }
                                
 
         }
-
-    }).catch(function (error) {
-        console.error(error);
+    // })
+    // }).catch(function (error) {
+    //     console.error(error);
     });
 
 })
