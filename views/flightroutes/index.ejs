@@ -1,15 +1,18 @@
 <% layout('layouts/boilerplate') %>
 
     <h1>My Flight Routes</h1>
-    <ul>
-        <% for (let flightroute of flightroutes){%>
-            <li><a href="/flightroutes/<%= flightroute._id %>">
-                    <%= flightroute.date %>
-                </a></li>
-            <% }%>
-    </ul>
-    <!-- <form action="/reconstruct" method="POST">
-        <button class="btn btn-outline-primary">View Graphic Routes</button>
-    </form> -->
-    <h2>Graphic presentation</h2>
-    <%- order_itineraries %>
+
+
+    <% while (order_itineraries.length > 0 || flightroutes.length > 0) {%>
+        <% if(order_itineraries.length > 0) {%>
+            <% const airport=order_itineraries.shift(); %>
+            <%= airport %>
+        <%}%>
+
+        <% if(flightroutes.length > 0) {%>
+            <%  const flightroute=flightroutes.shift(); %>
+            <a href="/flightroutes/<%= flightroute._id %>">
+                <i class="fas fa-plane"></i>
+            </a>  
+        <%}%>   
+    <% }%>
