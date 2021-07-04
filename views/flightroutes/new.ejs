@@ -1,38 +1,146 @@
 <% layout('layouts/boilerplate') %>
-
-<div class="row">
-    <h1 class="text-center">Flight Search</div>
-    <div class="col-6 offset-3">
-        <form id="searchForm" novalidate class="validated-form">
-            <div class="mb-3">
-                <label for="origin" class="form-label">Enter an origin(City/Country airport code): </label>
-                <input class="form-control" id="origin" type="text" placeholder="e.g. LAX-sky" name="origin" required>
-                <div class="valid-feedback">
-                    Well done!
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="destination" class="form-label">Enter a destination(City/Country airport code): </label>
-                <input class="form-control" id="destination" type="text" placeholder="e.g. SFO-sky" name="destination" required>
-                <div class="valid-feedback">
-                    Awesome!
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="outboundDate" class="form-label">Enter an outbound date</label>
-                <input class="form-control" id="outboundDate" type="text" placeholder="e.g. 2021-06-30" name="outboundDate" required>
-                <div class="valid-feedback">
-                    Excellent!
-                </div>
-            </div>
-            <input class="btn btn-outline-primary" type="reset" value="Reset">
-            <input class="btn btn-outline-primary" type="submit" value="Search">
-            <!-- <button>Search</button> -->
-        </form>
-        
-        <section id="container"></section>
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
+<style>
+    .flight-engine {
+        position: relative;
+        left: 0px;
+        right: 0px;
+        bottom: 25px;
+        padding: 100px;
+        z-index: 999;
+    }
+    .tab1.active {
+        display: block
+    }
+    .tab1 {
+        display: none
+    }
+    .tabing {
+        float: left;
+        width: 100%;
+        background: rgba(86, 165, 199, 0.8);
+        padding: 0 10px 10px 10px;
+        color: #fff;
+        height: 130px;
+        border-radius: 0%;
+    }
+    .tabing ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        width: 100%;
+        float: left;
+    }
+    .tabing ul li {
+        float: left;
+    }
+    .tabing ul li a {
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        color: #fff;
+        background: rgba(0, 130, 185, .9);
+        margin: 0 10px 0 0;
+        padding: 5px 10px 5px 10px;
+        border-radius: 0px 0px 5px 5px;
+        font-size: 16px;
+        text-align: left;
+    }
+    .tabing ul li a.active {
+        background: #c72522
+    }
+    .flight-tab {
+        width: 100%;
+        float: left;
+        margin-top: 10px;
+        padding: 15px
+    }
+    .flight-tab .textboxstyle {
+        width: 100%;
+        float: left;
+        color: #191919;
+        padding: 8px 10px 8px 35px;
+        border: none;
+        border-radius: 3px;
+        background: #f5f5f5;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .persent-one {
+        width: 30%;
+        float: left;
+        margin-right: 1%;
+        position: relative;
+        margin-bottom: 10px;
+    }
+    .persent-one i {
+        position: absolute;
+        left: 15px;
+        top: 0px;
+        color: #191919;
+        font-size: 25px;
+    }
+    .persent-one.less-per {
+        width: 20%;
+        float: left;
+        margin-right: 1%;
+    }
+    .persent-one.less-btn {
+        width: 5%;
+        float: left;
+        margin-right: 1%;
+    }
+    .persent-one.less-btn .cst-btn {
+        width: 85px;
+        height: 85px;
+        border-radius: 100%;
+        position: relative;
+        top: -32px;
+    }
+</style>
+<div class="flight-engine text-center">
+    <div class="container">
+        <div class="tabing">
+           <ul>
+              <li><a class="active" href="/flightroutes/new"><i class="fa fa-plane" aria-hidden="true"></i> Reset </a>
+              </li>
+           </ul>
+           <div class="tab-content">
+              <div id="1" class="tab1 active">
+                <form id="searchForm" novalidate class="validated-form">
+                    <div class="flight-tab row">
+                        <div class="persent-one">
+                            <i class="uit uit-arrow-down-right" aria-hidden="true"></i>
+                            <input type="text" name="origin" class="textboxstyle" id="origin" placeholder="From Airport (e.g. LAX-sky)">
+                        </div>
+                        <div class="persent-one">
+                            <i class="uit uit-arrow-down-right" aria-hidden="true"></i>
+                            <input type="text" name="destination" class="textboxstyle" id="destination" placeholder="To Airport (e.g. SFO-sky)">
+                        </div>
+                        <div class="persent-one less-per">
+                            <i class="uit uit-arrow-down-right" aria-hidden="true"></i>
+                            <input type="date" name="outboundDate" class="textboxstyle" id="from-date1" placeholder="Depart Date (e.g. 2021-06-30)">
+                        </div>
+                            <div class="persent-one less-btn">
+                            <input type="submit" name="submit" value="Search" class="btn btn-info cst-btn" id="#searchForm">
+                        </div>
+                    </div>
+                 </form>
+              </div>
+                 <!-- flight tab -->
+              </div>
+              <!-- tab 1 -->
+           </div>
+           </div>
+           <!-- tab content -->
+        </div>
+        <!-- tabbing -->
+        </div>
     </div>
-
+    <br>
+    <br>
+    <br>
+  <div class="card-deck"></section>
 </div>
 
 
