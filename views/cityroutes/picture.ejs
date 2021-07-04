@@ -1,0 +1,119 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet"> 
+
+<style>
+  h1.flight{
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 5em;
+    letter-spacing: -2px;
+    border-bottom: 2px solid black;
+    text-transform: uppercase;
+ }
+  }
+  .noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+        -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  }
+
+  button {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #986d9c;
+    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+    background-size: 200% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: 500ms;
+  }
+
+  button:before {
+    content: 'Flight Search';
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 40px;
+    background-color: #283e6b;
+    background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
+    transition: 500ms;
+  }
+
+  button:hover {
+    background-position: right;
+  }
+
+  button:hover:before {
+    color: rgba(99, 79, 79, 0.8);
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  #picture{
+    width: 600px;
+    max-height: 420px;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+  }
+
+  #cityImage{
+    max-width:100%;
+    height:420px;
+  }
+</style>
+
+<div class="container mt-5 mb-3">
+    <h1 class="flight"> Welcome to <%= collection[0] %></h1> <i class="fas fa-fighter-jet"></i> 
+</div>
+<div class="container mt-5 mb-3">
+  <div class="w3-content w3-section" id="picture">
+    <img class="mySlides w3-animate-left" src='<%= collection[1] %>' id="cityImage">
+    <img class="mySlides w3-animate-right" src='<%= collection[2] %>' id="cityImage">
+    <img class="mySlides w3-animate-left" src='<%= collection[3] %>' id="cityImage">
+    <img class="mySlides w3-animate-right" src='<%= collection[4] %>' id="cityImage">
+  </div>
+</div>
+<br><br><br>
+<div class="container mt-5 mb-3">
+  <div class="d-flex justify-content-center">
+    <form action="/flightroutes/new">
+      <button class="noselect"> </button>
+    </form>
+  </div>
+</div>
+
+<script>
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 2500);    
+    }
+</script>
+<script src="/picture.js"> </script>
+    
