@@ -83,6 +83,7 @@ form.addEventListener('submit',function(e)
                 
                 const cardTitle = document.createElement('h5');
                 cardTitle.classList.add("card-title");
+                cardTitle.style.fontWeight = "bold";
                 cardTitle.innerHTML = `Journey:  ${airports[ori]}  --> ${airports[dest]}`;
 
                 const cardAirline = document.createElement('p');
@@ -99,8 +100,10 @@ form.addEventListener('submit',function(e)
 
                 const cardButton = document.createElement('button');
                 // cardButton.classList.add("card-text");
-                cardButton.className = "btn btn-primary";
+                cardButton.classList.add('button5')
+                // cardButton.className = "btn btn-primary";
                 cardButton.innerHTML = 'Book Now';
+
 
                 
                 cardBody.appendChild(cardTitle);

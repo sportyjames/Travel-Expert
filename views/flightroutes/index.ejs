@@ -13,7 +13,7 @@
 
     <% while (order_itineraries.length > 0 || flightroutes.length > 0) {%>
         <% if(order_itineraries.length > 0) {%>
-            <% const airport=order_itineraries.shift(); %>
+            <% const airport =order_itineraries.shift(); %>
             <%= airport %>
         <%}%>
 
@@ -24,21 +24,12 @@
             </a>  
         <%}%>   
     <% }%>
-
     <div id='map' style='width: 800px; height: 600px;'></div>
     <div class="overlay">
         <button id="flight"> Let's Flight </button>
     </div>
     
     
-
-
-
-
-
-
-
-
 
     <!-- map style -->
 
@@ -57,6 +48,16 @@
          
         .overlay button:hover {
         background-color: #4ea0da;
+        }
+
+        .Airport {
+            font-size: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        a:hover{
+            background-color: #4ea0da;
         }
     </style>
     
