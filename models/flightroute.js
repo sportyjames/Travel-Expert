@@ -11,7 +11,29 @@ const FlightrouteSchema = new Schema({
     owner:{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    oriGeometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
+    desGeometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
 });
 
 module.exports = mongoose.model('Flightroute', FlightrouteSchema);

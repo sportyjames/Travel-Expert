@@ -210,6 +210,8 @@ s23. server side validation
 s24. Fixing the problem of search button
 - it should clear the previous element on the dom before add new element
 
+7/3/21:
+
 s25. home page setup 
 
 s26. DFS algorithm implementation
@@ -220,8 +222,18 @@ s28. unsplash API(city picture)
 
 s29. style the reconstructed itinerary
 
+7/4/21:
 
-
+s30. mapbox feature 
+- geocode our locations and add it to database
+    - npm install @mapbox/mapbox-sdk
+    - import mbxGeocoding in flightroutes.js
+    - create geocode for origin and destination
+    - work with GeoJSON
+        - define flightroute schema to have oriGeometry and desGeometry
+- displaying a map 
+    - put the CDN in boilerplate 
+    - create a map in flightroutes index page with the script tag
 
 
 
