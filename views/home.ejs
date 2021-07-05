@@ -1,12 +1,14 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <style>
     body {
-    font-family: 'Karantina',
-        cursive;
-    font-family: 'Lato',
-        sans-serif;
-    background-image: linear-gradient(#87bdd8, #f4a688);
+        font-family: 'Karantina',
+            cursive;
+        font-family: 'Lato',
+            sans-serif;
+        background-image: linear-gradient(#87bdd8, #f4a688);
     }
 
     .container {
@@ -23,7 +25,7 @@
         flex-direction: row;
         color: white;
         margin: 2rem;
-        justify-content: space-between;
+        /* justify-content: space-between; */
     }
 
     .logo-text {
@@ -87,7 +89,7 @@
         color: white;
         font-weight: bold;
         font-size: 1.2rem;
-          text-decoration: none;
+        text-decoration: none;
     }
 
     .begin-text button:focus {
@@ -112,15 +114,16 @@
     }
 
     label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
+        display: block;
+        font: 1rem 'Fira Sans', sans-serif;
     }
 
-    input, label {
+    input,
+    label {
         margin: .4rem 0;
     }
 
-    .searchbar{
+    .searchbar {
         margin-bottom: auto;
         margin-top: auto;
         height: 60px;
@@ -129,34 +132,34 @@
         padding: 10px;
     }
 
-    .search_input{
+    .search_input {
         color: white;
         border: 0;
         outline: 0;
         background: none;
         width: 0;
-        caret-color:transparent;
+        caret-color: transparent;
         line-height: 40px;
         transition: width 0.4s linear;
         font-size: 25px;
         margin: auto;
         font-family: 'Karantina',
-        cursive;
+            cursive;
     }
 
-    .searchbar:hover > .search_input{
+    .searchbar:hover>.search_input {
         padding: 0 10px;
         width: 350px;
-        caret-color:red;
+        caret-color: red;
         transition: width 0.4s linear;
     }
 
-    .searchbar:hover > .search_icon{
+    .searchbar:hover>.search_icon {
         background: white;
         color: #e74c3c;
     }
 
-    .search_icon{
+    .search_icon {
         height: 40px;
         width: 40px;
         float: right;
@@ -164,34 +167,74 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        color:white;
-        text-decoration:none;
+        color: white;
+        text-decoration: none;
     }
 
+
+    .about {
+        position: absolute;
+        top: 30;
+        right: 30;
+        margin-bottom: 2px;
+        padding: 7px;
+        font-size: 1.5rem;
+        width: 150px;
+        height: 50px;
+        display: block;
+        float: right;
+        /* background-color: rgb(94, 122, 94); */
+        color: white;
+        text-align: center;
+    }
+
+    .FAQ {
+        position: absolute;
+        top: 30;
+        right: 150;
+        margin-bottom: 2px;
+        padding: 7px;
+        font-size: 1.5rem;
+        width: 150px;
+        height: 50px;
+        display: block;
+        float: right;
+        /* background-color: rgb(94, 122, 94); */
+        color: white;
+        text-align: center;
+    }
 </style>
 <div class="container">
     <nav class="main-navbar">
         <span class="logo"><i class="fas fa-globe"></i><span class="logo-text">Travel Expert</span></span>
+        <a href="/about" class="about">About</a>
+        <a href="/FAQ" class="FAQ">FAQ</a>
+
+
+
     </nav>
 
     <div class="main">
+
 
         <div class="main-header">
             <p class="above-header-text"><em>Find your travel</em></p>
             <h1 class="beauty-text">
                 Travel Expert
-            </h1>   
+            </h1>
 
-            
+
+
+
             <div class="begin-text">
                 <form action="/picture" method="POST" novalidate="novalidate" id="FORM">
-                        <div class="d-flex justify-content-center h-30">
-                            <div class="searchbar">
-                                <input class="search_input" type="text" placeholder="Where to go?" name="cityName">
-                                <!-- <button > button </button> -->
-                                <button class="search_icon"><i class="fas fa-search" ty></i></button>
-                            </div>
+                    <div class="d-flex justify-content-center h-30">
+                        <div class="searchbar">
+                            <input class="search_input" type="text" placeholder="Where to go?" name="cityName">
+                            <!-- <button > button </button> -->
+                            <button class="search_icon"><i class="fas fa-search" ty></i></button>
                         </div>
+                    </div>
                 </form>
             </div>
 
@@ -208,6 +251,12 @@
 </div>
 
 <script src="https://kit.fontawesome.com/73b7f72ef4.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
