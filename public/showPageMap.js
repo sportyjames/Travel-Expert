@@ -7,6 +7,7 @@ zoom: 3
 });
 
 
+console.log(flightroutesCopy);
 
 let count = 1;
 for(let j = 0; j < flightroutesCopy.length; j++){
@@ -43,6 +44,7 @@ for(let j = 0; j < flightroutesCopy.length; j++){
     };
 
 
+    window['arc' + count] = [];
 
     window['lineDistance' + count] = turf.length(window['route' + count].features[0]);
 
