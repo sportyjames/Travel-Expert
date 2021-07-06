@@ -1,23 +1,24 @@
 <% layout('layouts/boilerplate') %>
-    
-    <style>     
-        h1{
+
+    <style>
+        h1 {
             margin-bottom: 30px;
-        }    
-        .overlay button {
-        font: 600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-        background-color: #3386c0;
-        color: #fff;
-        display: inline-block;
-        margin: 0;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 3px;
         }
-        
+
+        .overlay button {
+            font: 600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            background-color: #3386c0;
+            color: #fff;
+            display: inline-block;
+            margin: 0;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
         .overlay button:hover {
-        background-color: #4ea0da;
+            background-color: #4ea0da;
         }
 
         .Airport {
@@ -26,59 +27,65 @@
             text-transform: uppercase;
         }
 
-        .FlightDate{
+        .FlightDate {
             display: none;
         }
 
-        .flight:hover .FlightDate{
+        .flight:hover .FlightDate {
             /* background-color: #4ea0da; */
-            display:inline;
+            display: inline;
         }
 
-        .flight{
+        .flight {
             margin-left: 5px;
             margin-right: 35px;
             margin-top: 20px;
         }
 
-        .route{
+        .route {
             display: flex;
             /* justify-content: space-between; */
         }
 
-        .place{
+        .place {
             font-size: 30px;
             margin-left: 0px;
             margin-right: 15px;
         }
 
-        #FlightButton{
+        #FlightButton {
             margin-top: 20px;
-            
+
+        }
+
+        .overlay button:hover {
+            background-color: #4ea0da;
         }
     </style>
 
     <h1>My Flight Routes</h1>
     <div class="route">
-    <% while (order_itineraries.length > 0 || flightroutes.length > 0) {%>
-    
-        <p class="place">
-            <% if(order_itineraries.length > 0) {%>
-                <% console.log(order_itineraries) %>
-                <% var airport = order_itineraries.shift(); %>
-                <%= airport %>
+        <% while (order_itineraries.length> 0 || flightroutes.length > 0) {%>
+
+            <p class="place">
+                <% if(order_itineraries.length> 0) {%>
+                    <% console.log(order_itineraries) %>
+                        <% var airport=order_itineraries.shift(); %>
+                            <%= airport %>
+                                <%}%>
+            </p>
+            <p class="flight">
+                <% if(flightroutes.length> 0) {%>
+                    <% const flightroute=flightroutes.shift(); %>
+                        <a href="/flightroutes/<%= flightroute._id %>">
+                            <i class="fas fa-plane fa-3x"></i>
+                            <span class="FlightDate">
+                                <%= flightroute.date %>
+                            </span>
+                        </a>
+                        <%}%>
+            </p>
             <%}%>
-        </p>
-        <p class="flight">
-            <% if(flightroutes.length > 0) {%>
-                <%  const flightroute=flightroutes.shift(); %>
-                <a href="/flightroutes/<%= flightroute._id %>">
-                    <i class="fas fa-plane fa-3x"></i>
-                    <span class="FlightDate"> <%= flightroute.date %> </span>
-                </a>  
-            <%}%>   
-        </p>
-    <%}%>
     </div>
     <div class="mx-auto" id='map' style='width: 1000px; height: 550px;'></div>
     <div class="overlay">
@@ -87,23 +94,12 @@
         </div>
     </div>
 
-    
+
 
 
     <script>
-        const flightroutesCopy = <%- JSON.stringify(flightroutesCopy) %>;
+        const flightroutesCopy = <% - JSON.stringify(flightroutesCopy) %>;
     </script>
 
-                                            .overlay button:hover {
-                                                background-color: #4ea0da;
-                                            }
-                                        </style>
-
-
-
-                                        <script>
-                                            const flightroutesCopy = <% - JSON.stringify(flightroutesCopy) %>;
-                                        </script>
-
-                                        <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
-                                        <script src="/showPageMap.js"></script>
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+    <script src="/showPageMap.js"></script>
