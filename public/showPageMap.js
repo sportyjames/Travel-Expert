@@ -164,7 +164,7 @@ map.on('load', function () {
             // redefine the end
             var end =
                 window['route' + version].features[0].geometry.coordinates[
-                    window['counter' + version] >= DistSteps ? window['counter' + count2] : window['counter' + version] + 1
+                    window['counter' + version] >= DistSteps ? window['counter' + version] : window['counter' + version] + 1
                 ];
             // Recurively enter the animate for the next version
             animate(window['counter' + version]);
@@ -200,6 +200,3 @@ map.on('load', function () {
         animate(counter1);
     })
 });
-
-   
-
