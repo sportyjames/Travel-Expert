@@ -218,7 +218,7 @@
 
 
         <div class="main-header">
-            <p class="above-header-text"><em>Find your travel</em></p>
+            <p class="above-header-text"><em>Plan your travel</em></p>
             <h1 class="beauty-text">
                 Travel Expert
             </h1>
@@ -227,11 +227,10 @@
 
 
             <div class="begin-text">
-                <form action="/picture" method="POST" novalidate="novalidate" id="FORM">
+                <form action="/picture" method="POST" id="FORM" class="validated-form" novalidate>
                     <div class="d-flex justify-content-center h-30">
                         <div class="searchbar">
-                            <input class="search_input" type="text" placeholder="Where to go?" name="cityName">
-                            <!-- <button > button </button> -->
+                            <input class="search_input" type="text" placeholder="Where to go?" name="cityName" required>
                             <button class="search_icon"><i class="fas fa-search" ty></i></button>
                         </div>
                     </div>
@@ -243,10 +242,13 @@
     </div>
 
     <footer class="main-footer">
-        <i class="fas fa-laptop-code"></i>
-        <i class="fas fa-hashtag"></i>
-        <i class="far fa-address-card"></i>
-        <i class="fas fa-ad"></i>
+        <a href="https://github.com/sportyjames/travelExpert">
+            <i class="fab fa-github"></i>
+        </a>
+
+        <a href="mailto:jwucavaliers@gmail.com, Leoyang158@gmail.com">
+            <i class="fas fa-envelope-square"></i>
+        </a>
     </footer>
 </div>
 
@@ -260,3 +262,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
+<script src='/validateForms.js'></script>

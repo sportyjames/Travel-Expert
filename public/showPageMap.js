@@ -7,7 +7,6 @@ zoom: 3
 });
 
 
-console.log(flightroutesCopy);
 
 let count = 1;
 for(let j = 0; j < flightroutesCopy.length; j++){
