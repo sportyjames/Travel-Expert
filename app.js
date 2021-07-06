@@ -93,6 +93,15 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
+//3. about route 
+app.get('/about', (req, res) => {
+    res.render('about')
+});
+
+//4. FAQ page 
+app.get('/faq', (req, res) => {
+    res.render('faq')
+});
 
 //404 error handler
 app.all('*', (req, res, next) => {
