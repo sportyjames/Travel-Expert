@@ -11,19 +11,19 @@
     </ul>
 
 
-    <% while (order_itineraries.length > 0 || flightroutes.length > 0) {%>
-        <% if(order_itineraries.length > 0) {%>
+    <% while (order_itineraries.length> 0 || flightroutes.length > 0) {%>
+        <% if(order_itineraries.length> 0) {%>
             <% const airport=order_itineraries.shift(); %>
-            <%= airport %>
-        <%}%>
+                <%= airport %>
+                    <%}%>
 
-        <% if(flightroutes.length > 0) {%>
-            <%  const flightroute=flightroutes.shift(); %>
-            <a href="/flightroutes/<%= flightroute._id %>">
-                <i class="fas fa-plane"></i>
-            </a>  
-        <%}%>   
-    <% }%>
+                        <% if(flightroutes.length> 0) {%>
+                            <% const flightroute=flightroutes.shift(); %>
+                                <a href="/flightroutes/<%= flightroute._id %>">
+                                    <i class="fas fa-plane"></i>
+                                </a>
+                                <%}%>
+                                    <% }%>
 
     <div id='map' style='width: 800px; height: 600px;'></div>
     <div class="overlay">
@@ -40,32 +40,33 @@
 
 
 
-    <!-- map style -->
-
-    <style>         
-        .overlay button {
-        font: 600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-        background-color: #3386c0;
-        color: #fff;
-        display: inline-block;
-        margin: 0;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 3px;
-        }
-         
-        .overlay button:hover {
-        background-color: #4ea0da;
-        }
-    </style>
-    
 
 
-    <script>
-        const flightroutesCopy = <%- JSON.stringify(flightroutesCopy) %>;
-    </script>
+                                        <!-- map style -->
 
-    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
-    <script src="/showPageMap.js"></script>
-    
+                                        <style>
+                                            .overlay button {
+                                                font: 600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                                background-color: #3386c0;
+                                                color: #fff;
+                                                display: inline-block;
+                                                margin: 0;
+                                                padding: 10px 20px;
+                                                border: none;
+                                                cursor: pointer;
+                                                border-radius: 3px;
+                                            }
+
+                                            .overlay button:hover {
+                                                background-color: #4ea0da;
+                                            }
+                                        </style>
+
+
+
+                                        <script>
+                                            const flightroutesCopy = <% - JSON.stringify(flightroutesCopy) %>;
+                                        </script>
+
+                                        <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+                                        <script src="/showPageMap.js"></script>

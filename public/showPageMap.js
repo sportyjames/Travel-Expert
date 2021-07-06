@@ -8,10 +8,9 @@ var map = new mapboxgl.Map({
     zoom: 3
 });
 
-// Step1
-// Obtain the oriGeo and desGeo and Store them into the object route(index) and point(index)
-// Notice route(index) and point(index) are unique for each flight
-var count = 1;
+
+
+let count = 1;
 for(let j = 0; j < flightroutesCopy.length; j++){
     
     // obtain oriGeo and desGeo from each flightroute
