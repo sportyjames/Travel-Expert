@@ -1,5 +1,4 @@
 <% layout('layouts/boilerplate') %>
-
     <style>
         h1 {
             margin-bottom: 30px;
@@ -55,18 +54,11 @@
 
         #FlightButton {
             margin-top: 20px;
-
-        }
-
-        .overlay button:hover {
-            background-color: #4ea0da;
         }
     </style>
-
     <h1>My Flight Routes</h1>
     <div class="route">
         <% while (order_itineraries.length> 0 || flightroutes.length > 0) {%>
-
             <p class="place">
                 <% if(order_itineraries.length> 0) {%>
                     <% console.log(order_itineraries) %>
@@ -76,13 +68,11 @@
             </p>
             <p class="flight">
                 <% if(flightroutes.length> 0) {%>
-                    <% const flightroute=flightroutes.shift(); %>
-                        <a href="/flightroutes/<%= flightroute._id %>">
+                    <% const flightroute=flightroutes.shift(); %> <a href="/flightroutes/<%= flightroute._id %>">
                             <i class="fas fa-plane fa-3x"></i>
                             <span class="FlightDate">
                                 <%= flightroute.date %>
-                            </span>
-                        </a>
+                            </span> </a>
                         <%}%>
             </p>
             <%}%>
@@ -93,13 +83,8 @@
             <button id="FlightButton"> Simulate My Flight </button>
         </div>
     </div>
-
-
-
-
     <script>
         const flightroutesCopy = <% - JSON.stringify(flightroutesCopy) %>;
     </script>
-
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
     <script src="/showPageMap.js"></script>
