@@ -28,7 +28,7 @@ router.get('/', isLoggedIn ,catchAsync(async(req, res) => {
     const unorder_itineraries = dfs_input(flightroutes);
 
     const order_itineraries = dfs(unorder_itineraries,departure);
-
+  
     res.render('flightroutes/index', { flightroutes, flightroutesCopy, order_itineraries });
 }));
 
