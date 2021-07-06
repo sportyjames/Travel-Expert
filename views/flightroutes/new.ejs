@@ -6,8 +6,7 @@
 <style>
     .flight-engine {
         position: relative;
-        left: 0px;
-        right: 0px;
+        justify-content: center;
         bottom: 25px;
         padding: 100px;
         z-index: 999;
@@ -21,10 +20,10 @@
     .tabing {
         float: left;
         width: 100%;
-        background: rgba(86, 165, 199, 0.8);
+        background: rgba(86, 176, 214, 0.8);
         padding: 0 10px 10px 10px;
         color: #fff;
-        height: 130px;
+        height: 150px;
         border-radius: 0%;
     }
     .tabing ul {
@@ -116,11 +115,16 @@
         background-color:#FFFFFF;
         text-align:center;
         transition: all 0.15s;
-        }
-        .button5:hover{
+    }
+
+    .button5:hover{
         text-shadow: 0 0 2em rgba(255,255,255,1);
         color:#000000;
         border-color:#8eb2e7;
+    }
+
+    .card{
+        justify-content: center;
     }
 
     @media all and (max-width:30em){
@@ -129,10 +133,9 @@
         margin: 4rem auto;
      }
     }
-
-    p {
-        font-family: 'Roboto Condensed', sans-serif;;
-    }
+    /* p { */
+        /* font-family:'Roboto Condensed', sans-serif; */
+    /* } */
 </style>
 <div class="flight-engine text-center">
     <div class="container">
@@ -155,7 +158,8 @@
                         </div>
                         <div class="persent-one less-per">
                             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                            <input type="date" name="outboundDate" class="textboxstyle" id="from-date1" placeholder="Depart Date (e.g. 2021-06-30)">
+                            <% const today = new Date().toISOString().slice(0, 10) %> 
+                            <input type="date" min="<%= today %>"   name="outboundDate" class="textboxstyle" id="from-date1" placeholder="Depart Date (e.g. 2021-06-30)">
                         </div>
                             <div class="persent-one less-btn">
                             <input type="submit" name="submit" value="Search" class="btn btn-info cst-btn" id="#searchForm">
@@ -173,11 +177,8 @@
         <!-- tabbing -->
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-  <div class="card-deck"></section>
-</div>
+
+  <div class="card-deck" style="justify-content: center"></div>
 
 
 <script src="/skyscannerAPI.js"></script>

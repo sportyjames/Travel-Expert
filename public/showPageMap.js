@@ -197,7 +197,7 @@ map.on('load', function () {
     }
 
     // DOM Buttons that links to the 'flight' button in the index.ejs 
-    document.getElementById('flight').addEventListener('click', function () {
+    document.getElementById('FlightButton').addEventListener('click', function () {
         animate(counter1);
     })
 });
