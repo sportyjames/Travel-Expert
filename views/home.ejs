@@ -168,10 +168,42 @@
         text-decoration:none;
     }
 
+    .about {
+        position: absolute;
+        top: 30;
+        right: 30;
+        margin-bottom: 2px;
+        padding: 7px;
+        font-size: 1.5rem;
+        width: 150px;
+        height: 50px;
+        display: block;
+        float: right;
+        /* background-color: rgb(94, 122, 94); */
+        color: white;
+        text-align: center;
+    }
+    .FAQ {
+        position: absolute;
+        top: 30;
+        right: 150;
+        margin-bottom: 2px;
+        padding: 7px;
+        font-size: 1.5rem;
+        width: 150px;
+        height: 50px;
+        display: block;
+        float: right;
+        /* background-color: rgb(94, 122, 94); */
+        color: white;
+        text-align: center;
+    }
 </style>
 <div class="container">
     <nav class="main-navbar">
         <span class="logo"><i class="fas fa-globe"></i><span class="logo-text">Travel Expert</span></span>
+        <a href="/about" class="about">About</a>
+        <a href="/faq" class="FAQ">FAQ</a>
     </nav>
 
     <div class="main">
@@ -200,10 +232,13 @@
     </div>
 
     <footer class="main-footer">
-        <i class="fas fa-laptop-code"></i>
-        <i class="fas fa-hashtag"></i>
-        <i class="far fa-address-card"></i>
-        <i class="fas fa-ad"></i>
+        <a href="https://github.com/sportyjames/travelExpert">
+            <i class="fab fa-github"></i>
+        </a>
+
+        <a href="mailto:jwucavaliers@gmail.com, Leoyang158@gmail.com">
+            <i class="fas fa-envelope-square"></i>
+        </a>
     </footer>
 </div>
 

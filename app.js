@@ -11,12 +11,16 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
 
-//require flightroutes 
+//require flight routes 
 const flightrouteRoutes = require('./routes/flightroutes');
-//require userroutes
+//require user routes
 const userRoutes = require('./routes/users');
-//require previewroutes
+//require picture routes
 const pictureRoutes = require('./routes/pictureroutes')
+//require about routes
+const aboutRoutes = require('./routes/AboutRoutes')
+//require faq routes
+const faqRoutes = require('./routes/FaqRoutes')
 
 //db connection
 mongoose.connect('mongodb://localhost:27017/travel-expert', {
@@ -86,7 +90,12 @@ app.use('/', userRoutes);
 
 //1. flightroutes
 app.use('/flightroutes', flightrouteRoutes)
+//2. picture routes
 app.use('/picture', pictureRoutes)
+//3. about routes
+app.use('/about', aboutRoutes)
+//4. faq routes
+app.use('/faq', faqRoutes)
 
 //2. home route
 app.get('/', (req, res) => {

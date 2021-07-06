@@ -1,0 +1,117 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/about.css">
+    <div class="text-center">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <h1 class="font-weight-bold page-header main-blue">About</h1>
+            </div>
+            <div class="row mt-5">
+                <p class="about-us-copy main-blue statement">Have you been in a situation where you are in the
+                    middle of the vacation and you forgot to take the flight to your next destination?
+                    Believe me, you are not alone. How often do people check their reminders when there are in vacation
+                    mode? While you can try to remember your flights during the
+                    trip, Travel Expert takes care of this task for you so you can have the
+                    best vacation experience.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div id="mission-div" class="row justify-content-around">
+            <div class="col-sm-10 col-md-7">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="about-us-subheader text-uppercase">
+                            The Mission
+                        </h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 mt-4">
+                        <p class="text-center statement">
+                            To deliver a solution for the flight scheduling problem by building a web application
+                            integrated with the cutting-edge
+                            technologies and advanced algorithms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-none d-lg-flex col-3 justify-content-center align-items-center">
+                <div class="d-none d-lg-block container">
+                    <i class="main-blue text-center mission-icon fas fa-bullseye"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div id="mission-div" class="row justify-content-around">
+            <div class="col-sm-10 col-md-7">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="about-us-subheader text-uppercase">
+                            The implementation
+                        </h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 mt-4">
+
+                        <button class="accordion">The main technologies used in this applications:</button>
+                        <div class="panel">
+                            <ul>
+                                <li>MongoDB</li>
+                                <li>Express</li>
+                                <li>Node.js</li>
+                                <li>EJS</li>
+                                <li>Bootstrap 5</li>
+                            </ul>
+                        </div>
+
+                        <button class="accordion">The main APIs used in this applications:</button>
+                        <div class="panel">
+                            <ul>
+                                <li>Skyscanner API</li>
+                                <li>Unsplash API</li>
+                                <li>Mapbox API</li>
+                            </ul>
+                        </div>
+
+                        <button class="accordion">The main algorithms used in the application:</button>
+                        <div class="panel">
+                            <ul>
+                                <li>DFS(Depth First Search) for showing the flight scheduling from start to finish</li>
+                                <li>Recursion for creating interactive flight route map</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-none d-lg-flex col-3 justify-content-center align-items-center">
+                <div class="d-none d-lg-block container">
+                    <i class="main-blue text-center mission-icon fas fa-bullseye"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
