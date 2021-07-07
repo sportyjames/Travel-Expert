@@ -1,0 +1,56 @@
+h1{
+    margin-bottom: 30px;
+}    
+.overlay button {
+font: 600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+background-color: #3386c0;
+color: #fff;
+display: inline-block;
+margin: 0;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+border-radius: 3px;
+}
+
+.overlay button:hover {
+background-color: #4ea0da;
+}
+
+.Airport {
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.FlightDate{
+    display: none;
+}
+
+.flight:hover .FlightDate{
+    /* background-color: #4ea0da; */
+    display:inline;
+}
+
+.flight{
+    margin-left: 5px;
+    margin-right: 35px;
+    margin-top: 20px;
+}
+
+.route{
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.place{
+    font-size: 30px;
+    margin-left: 0px;
+    margin-right: 15px;
+}
+
+#FlightButton{
+    margin-top: 20px;
+    
+}
+
