@@ -30,7 +30,10 @@ router.get('/', isLoggedIn ,catchAsync(async(req, res) => {
 
     const order_itineraries = dfs(unorder_itineraries,departure);
 
-    res.render('flightroutes/index', { flightroutes, flightroutesCopy, order_itineraries });
+    var name = (await User.findById(req.user._id)).name;
+    if(!name) name = 'New Customer';
+
+    res.render('flightroutes/index', { flightroutes, flightroutesCopy, order_itineraries, name });
 }));
 
 //Setting  routes (reset the user's information)
@@ -39,7 +42,7 @@ router.get('/setting', isLoggedIn, catchAsync(async(req, res) => {
     const email = (await User.findById(req.user._id)).email;
     var name = (await User.findById(req.user._id)).name;
     if(!name){
-        name = "Leo";
+        name = "New Customer";
     }
     // console.log(userInfo);
     res.render('flightroutes/setting', {departure, email, name});
@@ -67,7 +70,7 @@ router.get('/:id', isLoggedIn, isOwner, catchAsync(async(req, res) => {
 //flight edit page (need to add isOwner middleware)
 router.get('/:id/edit',isLoggedIn, isOwner, catchAsync(async (req, res) => {
     const flightroute = await Flightroute.findById(req.params.id);
-    res.render('flightroutes/edit', { flightroute });
+    res.render('flightroutes/edit', { flightroute});
 }))
 
 //flight booking submission
