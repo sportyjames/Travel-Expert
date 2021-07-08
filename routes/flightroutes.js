@@ -8,6 +8,7 @@ const { isLoggedIn, isOwner} = require('../middleware'); //cannot book new fligh
 const dfs = require('../helpers/dfs'); //dfs helper
 const dfs_input = require('../helpers/dfs_input'); //create dfs input helper
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding"); //import mbxGeocoding service 
+const user = require('../models/user');
 const mapBoxToken = 'pk.eyJ1Ijoic3BvcnR5amFtZXMiLCJhIjoiY2twaHQxd3p6MDI0YjJwczFqYWd1MW83eSJ9.Ec5CD2tM6R-F812BnoCYvA';
 const geocoder = mbxGeocoding({accessToken: mapBoxToken})
 
@@ -31,6 +32,31 @@ router.get('/', isLoggedIn ,catchAsync(async(req, res) => {
 
     res.render('flightroutes/index', { flightroutes, flightroutesCopy, order_itineraries });
 }));
+
+//Setting  routes (reset the user's information)
+router.get('/setting', isLoggedIn, catchAsync(async(req, res) => {
+    const departure = (await User.findById(req.user._id)).departure;
+    const email = (await User.findById(req.user._id)).email;
+    var name = (await User.findById(req.user._id)).name;
+    if(!name){
+        name = "Leo";
+    }
+    // console.log(userInfo);
+    res.render('flightroutes/setting', {departure, email, name});
+}))
+
+router.put('/setting', isLoggedIn, catchAsync(async(req, res) => {
+    const currentUser = await User.findById(req.user._id);
+    if(!req.body.user.DepText) throw new ExpressError('Invalid time', 400);
+    if(!req.body.user.email) throw new ExpressError('Invalid time', 400);
+    if(!req.body.user.UserName) throw new ExpressError('Invalid time', 400);
+    const {email, UserName, DepText } = req.body.user;
+    await User.findByIdAndUpdate(currentUser, {email: email});
+    await User.findByIdAndUpdate(currentUser, {departure: DepText});
+    await User.findByIdAndUpdate(currentUser, {name: UserName});
+    req.flash('success', 'Successfully updated flight!');
+    res.redirect("/flightroutes");
+}))
 
 //flight show page (need to add isOwner middleware)
 router.get('/:id', isLoggedIn, isOwner, catchAsync(async(req, res) => {
@@ -64,7 +90,8 @@ router.post('/', isLoggedIn, catchAsync(async (req,res) => {
     flightroute.desGeometry = desGeoData.body.features[0].geometry;
     flightroute.owner = req.user._id;
     await flightroute.save();
-    console.log(flightroute);
+    // console.log(flightroute);
+
     req.flash('success','Successfully booked a new flight!');
     res.redirect("/flightroutes/new");
 }))

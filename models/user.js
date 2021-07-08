@@ -14,7 +14,12 @@ const UserSchema = new Schema(
         {
             type: String,
             require: true,
-        }
+        }, 
+        name:
+        {
+            type: String, 
+            require: false,
+        },
     }
 );
 

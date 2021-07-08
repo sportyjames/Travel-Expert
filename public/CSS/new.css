@@ -119,11 +119,10 @@
 
 .card{
     justify-content: center;
-}
 
 @media all and (max-width:30em){
-.button5{
-    display: block;
-    margin: 4rem auto;
- }
+    .button5{
+        display: block;
+        margin: 4rem auto;
+     }
 }
