@@ -54,7 +54,7 @@ router.put('/setting', isLoggedIn, catchAsync(async(req, res) => {
     await User.findByIdAndUpdate(currentUser, {email: email});
     await User.findByIdAndUpdate(currentUser, {departure: DepText});
     await User.findByIdAndUpdate(currentUser, {name: UserName});
-    req.flash('success', 'Successfully updated flight!');
+    req.flash('success', 'Successfully updated your Profile info!');
     res.redirect("/flightroutes");
 }))
 
