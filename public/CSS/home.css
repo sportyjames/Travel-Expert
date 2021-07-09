@@ -57,10 +57,13 @@ ul li a {
 }
 
 .beauty-text {
-    font-size: 7rem;
+    font-size: 6rem;
     color: white;
     margin: 0;
     text-shadow: 0px 7px 5px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .sub-header {
