@@ -3,8 +3,8 @@ form.addEventListener('submit',function(e)
 {
     e.preventDefault();
     //take textfield input to generate dynamic api request url
-    const origin = form.elements.origin.value;
-    const destination = form.elements.destination.value;
+    const origin = form.elements.origin.value + '-sky';
+    const destination = form.elements.destination.value + '-sky';
     const outboundDate = form.elements.outboundDate.value;
 
     const options = {
