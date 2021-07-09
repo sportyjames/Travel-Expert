@@ -2,8 +2,9 @@
     <div class="row">
         <div class="col-6 offset-3">
             <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading">
-                    <%=err.message%>
+                <h4 class="alert-heading text-center">
+                    <%= err.message==="Cannot read property 'urls' of undefined" ? "Destination is not found" :
+                        err.message%>
                 </h4>
             </div>
         </div>

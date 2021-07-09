@@ -12,6 +12,7 @@ var picture_3;
 var picture_4;
 var collection = [];
 
+//set a default city if user tries to skip typing the city at home page
 router.get('/', catchAsync(async (req,res) => {
     if(collection.length == 0){
         let city = 'Houston';
