@@ -1,33 +1,116 @@
 <% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="\CSS\show.css">
+<section id="mainTicket">
+    <section class="row1">
 
-<div class="row">
-    <div class="col-6 offset-3">
-        <div class="card" mb-3>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%= flightroute.origin %>  --> <%= flightroute.destination %> by <%= flightroute.airline %>
-                        </h5>
-                        <p class="card-text">
-                            Price is: <%= flightroute.price %> USD
-                        </p>
-                        <p class="card-text">
-                            Depart at: <%= flightroute.date %>
-                        </p>
-                        <p class="card-text">
-                            Direct flight: <%= flightroute.direct %>
-                        </p>
-                    </div>
-                    <div class="btn-group m-2">
-                        <a class="btn btn-info" href="/flightroutes/<%= flightroute._id %>/edit">Edit</a>
-                        <form action="/flightroutes/<%=flightroute._id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-danger">Delete</button>
-                        </form>
-                        <a class="btn btn-success" href="/flightroutes">Back</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <section class="row1a">
+            <label class="label1">Flight</label>
+            <label class="label2">Price</label>
+            <label class="label3">passenger</label>
+
+            <label class="label4">flight</label>
+    </section>
+
+    <section class="row1b">
+        <span class="flightBrandName"><%= flightroute.airline %></span>
+            <span class="destinationNames"><%- " $ " + flightroute.price %></span>
+            <span class="passengerName"><%= name %></span>
+
+            <span class="flightBrandName1"><%= flightroute.airline %></span>
+    </section>
+
+
+    </section>
+
+    <section class="row2">
+
+<section class="row2a">
+<label class="a2a" for="">passenger</label> <label class="a2aa" for="">passenger</label>
+  </section>
+
+  <section class="row2b">
+    <span class="passenger2a"><%= flightroute.origin + " ->" + flightroute.destination %></span>
+    <span class="passenger2aa"><%= name %></span>
+  </section>
+      </section>
+
+        <section class="row3">
+
+<section class="row3a">
+
+<label class="a3a" for="">gate</label>
+<label class="a3b" for="">departure</label>
+<label class="a3c" for="">boarding zone</label>
+<label class="a3d" for="">seat</label>
+<label class="a3e" for="">departure</label>
+
+</section>
+
+
+<section class="row3b">
+<span class="s3a"><%- "A" + Math.floor(Math.random() * 100); %></span>
+<span class="s3b">3:15<span class="normal"><%= flightroute.date %> </span></span>
+<span class="s3c"><%- "D" + Math.floor(Math.random() * 10) %></span>
+<span class="s3d"><%- Math.floor(Math.random() * 30) + "C"; %></span>
+<span class="s3e">3:15</span>
+</section>
+
+
+</section>
+<hr class="left">
+<hr class="right">
+<hr>
+
+    <section class="row4">
+
+    <section class="row4a">
+
+    <label class="a4a" for="">tracking</label>
+    <label class="a4b" for="">data</label>
+    <label class="a4c" for="">options</label>
+    <label class="a4d" for="">options</label>
+
+
+    </section>
+
+    <section class="row4b">
+        <span class="s4a"><%- Math.floor(Math.random() * 10).toString() + " " + Math.floor(Math.random() * 1000).toString() + " " 
+                              + Math.floor(Math.random() * 1000).toString() + " " + Math.floor(Math.random() * 10000).toString() + " " + Math.floor(Math.random() * 10000).toString()
+        + " " + Math.floor(Math.random() * 10).toString() %>
+        </span>
+        <span class="s4b"><%- Math.floor(Math.random() * 10).toString() + " i" + Math.floor(Math.random() * 100).toString() + " " + Math.floor(Math.random() * 10).toString() %>  </span>
+        <span class="s4c">1st cl</span>
+        <img class="s4d" src="https://lemonecit.github.io/airplaneticket/images/barcode1.gif" alt="">
+              <span class="s4e">1st cl</span>
+              <img class="s4f" src="https://lemonecit.github.io/airplaneticket/images/barcode1.gif" alt="">
+          </section>
+
+      </section>
+
+
+
+        <section class="row6">
+                  <section class="row6a">
+          <img class="img1" src="https://lemonecit.github.io/airplaneticket/images/delta.png" alt="Airline">
+                    <img class="img2" src="https://lemonecit.github.io/airplaneticket/images/delta.png" alt="Airline">
+      </section>
+      </section>
+
+
+</section>
+<div class="buttonAll">
+    <div class="buttonGroup">
+        <a class="btn" href="/flightroutes">Back</a>
+    </div>
+    <div class="buttonGroup">
+        <a class="btn" href="/flightroutes/<%= flightroute._id %>/edit">Edit</a>
+    </div>
+    <div class="buttonGroup">
+        <form action="/flightroutes/<%=flightroute._id%>?_method=DELETE" method="POST">
+            <button class="btn">Delete</button>
+        </form>
     </div>
 </div>
+
+
