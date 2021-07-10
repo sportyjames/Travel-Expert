@@ -50,9 +50,9 @@ router.get('/setting', isLoggedIn, catchAsync(async(req, res) => {
 
 router.put('/setting', isLoggedIn, catchAsync(async(req, res) => {
     const currentUser = await User.findById(req.user._id);
-    if(!req.body.user.DepText) throw new ExpressError('Invalid time', 400);
-    if(!req.body.user.email) throw new ExpressError('Invalid time', 400);
-    if(!req.body.user.UserName) throw new ExpressError('Invalid time', 400);
+    if(!req.body.user.email) throw new ExpressError('Invalid email address', 400);
+    if(!req.body.user.UserName) throw new ExpressError('Invalid profile name', 400);
+    if(!req.body.user.DepText) throw new ExpressError('Invalid departure', 400);
     const {email, UserName, DepText } = req.body.user;
     await User.findByIdAndUpdate(currentUser, {email: email});
     await User.findByIdAndUpdate(currentUser, {departure: DepText});

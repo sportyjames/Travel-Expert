@@ -16,7 +16,7 @@ router.post('/register', catchAsync(async(req, res) => {
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', `Welcome to Travel Expert, ${req.user.username}!`);
-            res.redirect('/');
+            res.redirect('/flightroutes/new');
         })
     } catch (e) {
         console.log("error");
@@ -31,7 +31,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login',passport.authenticate('local',{ failureFlash:true, failureRedirect:'/login'}),(req,res) => {
     req.flash('success',`Welcome back ${req.user.username}!`);
-    const redirectUrl = req.session.returnTo || '/';
+    const redirectUrl = req.session.returnTo || '/flightroutes';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 });

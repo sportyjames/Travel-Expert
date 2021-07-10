@@ -10,6 +10,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
+//mongo sql injection prevention(prevent key with dollar sign and period)
+const mongoSanitize = require('express-mongo-sanitize');
+
 
 //require flight routes 
 const flightrouteRoutes = require('./routes/flightroutes');
@@ -55,6 +58,9 @@ app.use(express.urlencoded({extended: true}));
 //middleware: tell express to use method override(put,delete)
 app.use(methodOverride('_method'));
 
+//sql injection protection
+app.use(mongoSanitize())
+
 
 //session and flash
 const sessionConfig = {
@@ -81,6 +87,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //this middleware ensures flash won't be passed to template but have access to something called success
 app.use((req, res, next) => {
+    // console.log(req.query);
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error'); //work on it later

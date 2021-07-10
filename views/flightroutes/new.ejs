@@ -1,52 +1,55 @@
 <% layout('layouts/boilerplate') %>
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/CSS/new.css">
-<div class="flight-engine text-center">
-    <div class="container">
-        <div class="tabing">
-           <ul>
-              <li><a class="active" href="/flightroutes/new"><i class="fa fa-plane" aria-hidden="true"></i> Reset </a>
-              </li>
-           </ul>
-           <div class="tab-content">
-              <div id="1" class="tab1 active">
-                <form id="searchForm" novalidate class="validated-form">
-                    <div class="flight-tab row">
-                        <div class="persent-one">
-                            <i class="fas fa-binoculars" aria-hidden="true"></i>
-                            <input type="text" name="origin" class="textboxstyle" id="origin" placeholder="From Airport (e.g. LAX-sky)">
-                        </div>
-                        <div class="persent-one">
-                            <i class="fas fa-plane-arrival" aria-hidden="true"></i>
-                            <input type="text" name="destination" class="textboxstyle" id="destination" placeholder="To Airport (e.g. SFO-sky)">
-                        </div>
-                        <div class="persent-one less-per">
-                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                            <% const today = new Date().toISOString().slice(0, 10) %> 
-                            <input type="date" min="<%= today %>"   name="outboundDate" class="textboxstyle" id="from-date1" placeholder="Depart Date (e.g. 2021-06-30)">
-                        </div>
-                            <div class="persent-one less-btn">
-                            <input type="submit" name="submit" value="Search" class="btn btn-info cst-btn" id="#searchForm">
-                        </div>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/new.css">
+    <div class="flight-engine text-center">
+        <div class="container">
+            <div class="tabing">
+                <ul>
+                    <li><a class="active" href="/flightroutes/new"><i class="fa fa-plane" aria-hidden="true"></i> Reset
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="1" class="tab1 active">
+                        <form id="searchForm" novalidate class="validated-form">
+                            <div class="flight-tab row">
+                                <div class="persent-one">
+                                    <i class="fas fa-binoculars" aria-hidden="true"></i>
+                                    <input type="text" name="origin" class="textboxstyle" id="origin"
+                                        placeholder="From Airport (e.g. LAX)">
+                                </div>
+                                <div class="persent-one">
+                                    <i class="fas fa-plane-arrival" aria-hidden="true"></i>
+                                    <input type="text" name="destination" class="textboxstyle" id="destination"
+                                        placeholder="To Airport (e.g. SFO)">
+                                </div>
+                                <div class="persent-one less-per">
+                                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                    <% const today=new Date().toISOString().slice(0, 10) %>
+                                        <input type="date" min="<%= today %>" name="outboundDate" class="textboxstyle"
+                                            id="from-date1" placeholder="Depart Date (e.g. 2021-06-30)">
+                                </div>
+                                <div class="persent-one less-btn">
+                                    <input type="submit" name="submit" value="Search" class="btn btn-info cst-btn"
+                                        id="#searchForm">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                 </form>
-              </div>
-                 <!-- flight tab -->
-              </div>
-              <!-- tab 1 -->
-           </div>
-           </div>
-           <!-- tab content -->
+                    <!-- flight tab -->
+                </div>
+                <!-- tab 1 -->
+            </div>
         </div>
-        <!-- tabbing -->
-        </div>
+        <!-- tab content -->
+    </div>
+    <!-- tabbing -->
+    </div>
     </div>
 
-  <div class="card-deck" style="justify-content: center"></div>
+    <div class="card-deck" style="justify-content: center"></div>
 
-<script src="/skyscannerAPI.js"></script>
-
-
+    <script src="/skyscannerAPI.js"></script>
