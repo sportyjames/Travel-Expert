@@ -235,7 +235,11 @@ s30. mapbox feature
     - put the CDN in boilerplate 
     - create a map in flightroutes index page with the script tag
 
+7/9/21:
 
+s31. security 
+
+s32. server side validation using JOI 
 
 
 

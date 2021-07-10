@@ -4,7 +4,7 @@ const Flightroute = require('../models/flightroute');
 const User = require('../models/user');
 const catchAsync = require('../utils/catchAsync');
 const ExpressError = require('../utils/ExpressError');
-const { isLoggedIn, isOwner} = require('../middleware'); //cannot book new flightroute if not signed in !!!
+const { isLoggedIn, isOwner, validateUser, validateFlightroute} = require('../middleware'); //cannot book new flightroute if not signed in !!!
 const dfs = require('../helpers/dfs'); //dfs helper
 const dfs_input = require('../helpers/dfs_input'); //create dfs input helper
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding"); //import mbxGeocoding service 
@@ -48,11 +48,11 @@ router.get('/setting', isLoggedIn, catchAsync(async(req, res) => {
     res.render('flightroutes/setting', {departure, email, name});
 }))
 
-router.put('/setting', isLoggedIn, catchAsync(async(req, res) => {
+router.put('/setting', isLoggedIn, validateUser, catchAsync(async(req, res) => {
     const currentUser = await User.findById(req.user._id);
-    if(!req.body.user.email) throw new ExpressError('Invalid email address', 400);
-    if(!req.body.user.UserName) throw new ExpressError('Invalid profile name', 400);
-    if(!req.body.user.DepText) throw new ExpressError('Invalid departure', 400);
+
+    //validateUser is gonna validate our data before we even attempt to save it with Mongoose
+
     const {email, UserName, DepText } = req.body.user;
     await User.findByIdAndUpdate(currentUser, {email: email});
     await User.findByIdAndUpdate(currentUser, {departure: DepText});
@@ -101,8 +101,10 @@ router.post('/', isLoggedIn, catchAsync(async (req,res) => {
 
 
 //flight edit submission(need to add isOwner middleware)
-router.put('/:id', isLoggedIn, isOwner, catchAsync(async (req, res) => {
-    if(!req.body.flightroute.date) throw new ExpressError('Invalid time', 400); //server client validation for invalid time input
+router.put('/:id', isLoggedIn, isOwner, validateFlightroute, catchAsync(async (req, res) => {
+  
+    //validateFlightroute is gonna validate our data before we even attempt to save it with Mongoose
+
     const { id } = req.params;
     const flightroute = await Flightroute.findByIdAndUpdate(id, {date: req.body.flightroute.date});
     req.flash('success', 'Successfully updated flight!');
