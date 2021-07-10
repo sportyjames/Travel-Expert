@@ -24,7 +24,8 @@ const pictureRoutes = require('./routes/pictureroutes')
 const aboutRoutes = require('./routes/AboutRoutes')
 //require faq routes
 const faqRoutes = require('./routes/FaqRoutes')
-
+//require intro routes
+const introRoutes = require('./routes/Intro')
 //db connection
 mongoose.connect('mongodb://localhost:27017/travel-expert', {
     useNewUrlParser: true,
@@ -106,8 +107,9 @@ app.use('/picture', pictureRoutes)
 app.use('/about', aboutRoutes)
 //4. faq routes
 app.use('/faq', faqRoutes)
-
-//2. home route
+//5. intro routes
+app.use('/intro', introRoutes)
+//6. home route
 app.get('/', (req, res) => {
     res.render('home')
 });
