@@ -56,7 +56,11 @@ module.exports.createFlightroute = async (req,res) => {
 
 module.exports.showFlightroutes = async(req, res) => {
     const flightroute = await Flightroute.findById(req.params.id);
-    res.render('flightroutes/show', { flightroute });
+    var name = (await User.findById(req.user._id)).name;
+    if(!name){
+        name = "New Passenger";
+    }
+    res.render('flightroutes/show', { flightroute, name});
 }
 
 module.exports.renderEditForm = async (req, res) => {
