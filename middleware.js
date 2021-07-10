@@ -1,3 +1,5 @@
+const {userSchema, flightrouteSchema, registerSchema} = require('./schemas.js');
+const ExpressError = require('./utils/ExpressError');
 const Flightroute = require('./models/flightroute');
 
 module.exports.isLoggedIn = (req, res, next) => {
@@ -19,3 +21,38 @@ module.exports.isOwner = async(req, res, next) => {
     }
     next();
 }
+
+//middleware
+module.exports.validateUser = (req, res, next) => {
+    const { error } = userSchema.validate(req.body);
+    if(error){
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400) 
+    }
+    else{
+        next();
+    }
+}
+
+module.exports.validateFlightroute = (req, res, next) => {
+    const { error } = flightrouteSchema.validate(req.body);
+    if(error){
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400) 
+    }
+    else{
+        next();
+    }
+}
+
+module.exports.registerValidation = (req, res, next) => {
+    const { error } = registerSchema.validate(req.body);
+    if(error){
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400) 
+    }
+    else{
+        next();
+    }
+}
+

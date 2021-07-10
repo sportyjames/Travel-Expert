@@ -3,26 +3,27 @@ const router = express.Router();
 const passport = require('passport');
 const catchAsync = require('../utils/catchAsync');
 const User = require('../models/user');
+const {registerValidation} = require('../middleware');
 
 router.get('/register', (req, res) => {
     res.render('users/register');
 });
 
-router.post('/register', catchAsync(async(req, res) => {
-    try {
-        const { email, username, password, departure } = req.body;
-        const user = new User({ email, departure, username });
-        const registeredUser = await User.register(user, password);
-        req.login(registeredUser, err => {
-            if (err) return next(err);
-            req.flash('success', `Welcome to Travel Expert, ${req.user.username}!`);
-            res.redirect('/flightroutes/new');
-        })
-    } catch (e) {
-        console.log("error");
-        req.flash('error', e.message);
-        res.redirect('register');
-    }
+router.post('/register', registerValidation, catchAsync(async(req, res) => {
+    // try {
+    const { email, username, password, departure } = req.body;
+    const user = new User({ email, departure, username });
+    const registeredUser = await User.register(user, password);
+    req.login(registeredUser, err => {
+        if (err) return next(err);
+        req.flash('success', `Welcome to Travel Expert, ${req.user.username}!`);
+        res.redirect('/flightroutes/new');
+    })
+    // } catch (e) {
+    //     console.log("error");
+    //     req.flash('error', e.message);
+    //     res.redirect('register');
+    // }
 }));
 
 router.get('/login', (req, res) => {
