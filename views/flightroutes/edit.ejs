@@ -1,11 +1,14 @@
 <% layout('layouts/boilerplate') %>
-<div class="row" id="EditCard">
-    <h1 class="text-center">Edit Flight</div>
+    <div class="row" id="EditCard">
+        <h1 class="text-center">Edit Flight
+    </div>
     <div class="col-6 offset-3">
         <form action="/flightroutes/<%=flightroute._id%>?_method=PUT" method="POST" novalidate class="validated-form">
             <div class="mb-3">
-                <label for="origin" class="form-label">Time of departure(Specify the time of departure caused by delaying or reschedule)</label>
-                <input class="form-control" id="origin" type="text" placeholder="2021-06-30-17:00" name="flightroute[date]" required>
+                <label for="origin" class="form-label">Time of departure(Specify the time of departure caused by
+                    delaying or reschedule)</label>
+                <input class="form-control" id="origin" type="text" placeholder="YEAR-MONTH-DAY-18:00"
+                    name="flightroute[date]" required>
                 <div class="valid-feedback">
                     Well done!
                 </div>
@@ -16,5 +19,4 @@
         <a href="/flightroutes/<%= flightroute._id %>">Back to this flight route</a>
     </div>
 
-</div>
-
+    </div>
