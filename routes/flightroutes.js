@@ -64,7 +64,11 @@ router.put('/setting', isLoggedIn, catchAsync(async(req, res) => {
 //flight show page (need to add isOwner middleware)
 router.get('/:id', isLoggedIn, isOwner, catchAsync(async(req, res) => {
     const flightroute = await Flightroute.findById(req.params.id);
-    res.render('flightroutes/show', { flightroute });
+    var name = (await User.findById(req.user._id)).name;
+    if(!name){
+        name = "New Customer";
+    }
+    res.render('flightroutes/show', { flightroute, name });
 }));
 
 //flight edit page (need to add isOwner middleware)
