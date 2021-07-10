@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const faq = require('../controllers/faq');
 
-router.get('/', (req, res) => {
-    res.render('about')
-});
+router.get('/', faq.index);
 
 module.exports = router;

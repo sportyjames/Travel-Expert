@@ -19,11 +19,11 @@ const flightrouteRoutes = require('./routes/flightroutes');
 //require user routes
 const userRoutes = require('./routes/users');
 //require picture routes
-const pictureRoutes = require('./routes/pictureroutes')
+const pictureRoutes = require('./routes/picture');
 //require about routes
-const aboutRoutes = require('./routes/AboutRoutes')
+const aboutRoutes = require('./routes/about');
 //require faq routes
-const faqRoutes = require('./routes/FaqRoutes')
+const faqRoutes = require('./routes/faq');
 
 //db connection
 mongoose.connect('mongodb://localhost:27017/travel-expert', {
@@ -107,7 +107,7 @@ app.use('/about', aboutRoutes)
 //4. faq routes
 app.use('/faq', faqRoutes)
 
-//2. home route
+//5. home route
 app.get('/', (req, res) => {
     res.render('home')
 });
