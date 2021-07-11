@@ -3,12 +3,15 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
-const session = require('express-session');
 const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const keys = require('./key');
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 //mongo sql injection prevention(prevent key with dollar sign and period)
 const mongoSanitize = require('express-mongo-sanitize');
@@ -26,7 +29,9 @@ const aboutRoutes = require('./routes/about');
 const faqRoutes = require('./routes/faq');
 const introRoutes = require('./routes/Intro')
 //db connection
-mongoose.connect('mongodb://localhost:27017/travel-expert', {
+// const dbUrl = process.env.DB_URL;
+// mongodb://localhost:27017/travel-expert
+mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -61,9 +66,19 @@ app.use(methodOverride('_method'));
 //sql injection protection
 app.use(mongoSanitize())
 
+const store = MongoStore.create({
+    mongoUrl: keys.mongoURI,
+    touchAfter: 24 * 60 * 60
+});
+
+store.on("error", function (e) {
+    console.log("SESSION STORE ERROR", e)
+})
+
 
 //session and flash
 const sessionConfig = {
+    store,
     secret: 'thisshouldbeabettersecret!',
     resave: false, //this makes deprecation warning go away
     saveUninitialized: true, //this makes deprecation warning go away
