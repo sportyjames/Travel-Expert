@@ -18,9 +18,22 @@ module.exports.index = async(req, res) => {
 
     const order_itineraries = dfs(unorder_itineraries,departure);
 
+    let dict = {}
+    for(let i = 0; i < order_itineraries.length - 1; i++) {
+        flight = order_itineraries[i] + order_itineraries[i+1];
+        dict[flight] = i;
+    }
+    // creating dictionary that contains the combination of orgin and destination with its priority
+
+    flightroutesCopy.sort((a, b) => {
+        a_flight = a.origin + a.destination;
+        b_flight = b.origin + b.destination;
+        return dict[a_flight] - dict[b_flight];
+    });
+    // sorting the flightroutesCopy based on the priority in the previous dict
+
     var name = (await User.findById(req.user._id)).name;
     if(!name) name = 'New Customer';
-
     res.render('flightroutes/index', { flightroutes, flightroutesCopy, order_itineraries, name });
 }
 

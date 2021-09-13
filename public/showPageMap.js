@@ -1,5 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3BvcnR5amFtZXMiLCJhIjoiY2twaHQxd3p6MDI0YjJwczFqYWd1MW83eSJ9.Ec5CD2tM6R-F812BnoCYvA';
-
+console.log(flightroutesCopy);
+// console.log("order");
+// console.log(order_itineraries);
 // Creating a map and Applying Some Styles to the map
 var map = new mapboxgl.Map({
     container: 'map',
