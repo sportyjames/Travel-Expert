@@ -6,7 +6,7 @@
 they can view their flights being connected and play flight simulation on an interactive map. 
 
 - Main Challenges:
-1. Generated connected flight schedule by the use of DFS algorithm.
-2. Implemented flight simulation between destinations in an interactive map by calling the animation function recursively. 
+  - Generated connected flight schedule by the use of DFS algorithm.
+  - Implemented flight simulation between destinations in an interactive map by calling the animation function recursively. 
 
 - Please check out our app which is hosted on heroku! [Click Me](https://mysterious-meadow-24695.herokuapp.com/)
