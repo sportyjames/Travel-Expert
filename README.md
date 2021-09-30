@@ -6,6 +6,6 @@
   - Merging flight tickets by the use of DFS algorithm.
   - Implementing flight simulation between destinations by calling the animation function recursively. 
 
-- Please check out our app which is hosted on heroku! [Click Me](https://mysterious-meadow-24695.herokuapp.com/)
+- Please check out the app which is hosted on heroku! [Click Me](https://mysterious-meadow-24695.herokuapp.com/)
 
 - Development team: James Wu, Leo Yang
