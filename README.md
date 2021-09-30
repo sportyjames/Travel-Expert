@@ -1,12 +1,11 @@
 # TravelExpert
 
-- Most flight scheduling apps today are overwhelming users with the seperated flight informations and they usually do not come with the flight simulation functionality, which does not provide great user experience.
-
-- My friend Leo and I created a full stack web app that allows the users to book their flight tickets and when they goto their orders page, 
-they can view their flights being connected and play flight simulation on an interactive map. 
+- Travel Expert is your next flight scheduling app! It is a full stack web applicaiton dedicated to make flight scheduling less overwhelming and more fun. It is less overwhelming because rather than showing seperated flight tickets information in a list view, Traverl Expert merges flights tickets information into a sequence for better viewing experience. It is more fun because each user can play simulation for their corresponding flight schedule.  
 
 - Main Challenges:
-  - Generated connected flight schedule by the use of DFS algorithm.
-  - Implemented flight simulation between destinations in an interactive map by calling the animation function recursively. 
+  - Merging flight tickets by the use of DFS algorithm.
+  - Implementing flight simulation between destinations by calling the animation function recursively. 
 
 - Please check out our app which is hosted on heroku! [Click Me](https://mysterious-meadow-24695.herokuapp.com/)
+
+- Development team: James Wu, Leo Yang
